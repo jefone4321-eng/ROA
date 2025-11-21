@@ -1,0 +1,78 @@
+import { View, Text, StyleSheet, Button, Alert } from 'react-native';
+import React, { useState } from 'react';
+
+const App = () => {
+  const [getData, setGetData] = useState([]);
+
+  const fetchData= async()=>{
+    await fetch('https://registry.dog/api/v1')
+    .then((res)=>res.json())
+    .then((data)=>console.log(data));
+  };
+    return (
+      <View style ={styles.parentStyle}>
+        <View style={{ margin:20}}>
+        <Button
+          title='Fetch Data'
+          onPress={() => {
+            Alert.alert('Button Pressed', 'Fetching data from API...');
+            fetchData();
+          }}
+     />
+        </View>
+  <View style={[styles.subparentStyle, styles.getRefRed]}>
+    <Text>Layout 1</Text>  
+    </View>
+
+  <View style={[styles.subparentStyle, styles.getRefBlue]}>
+    <Text>Layout 2</Text>
+    </View>
+
+  <View style={[styles.subparentStyle, styles.getRefGreen]}> 
+    <Text>Layout 3</Text>
+    </View>
+      </View>
+    );
+  }; 
+
+  const styles = StyleSheet.create({
+  parentStyle: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  subparentStyle: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+  },
+  getRefRed: {
+    borderColor: 'red',
+    borderWidth: 2,
+  },
+  getRefBlue: {
+    borderColor: 'blue',
+    borderWidth: 2,
+  },
+  getRefGreen: {
+    borderColor: 'green',
+    borderWidth: 2,
+  },
+});
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   
+export default App
